@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <title>Mind.Full.Of.Dreams</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Base font & colors inspired by Rupi Kaur */
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f9f6f2;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 1px 6px rgb(0 0 0 / 0.05);
+      padding: 2rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+    header h1 {
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      font-size: 3rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+      color: #5a4a3c;
+      user-select: none;
+    }
+    nav .nav-link {
+      color: #6e6259;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0 1.5rem;
+      transition: color 0.3s ease;
+    }
+    nav .nav-link:hover,
+    nav .nav-link.active {
+      color: #a88362;
+      text-decoration: underline;
+    }
+    .dropdown-menu {
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      background: transparent;
+    }
+    .dropdown-item {
+      color: #6e6259;
+      font-style: italic;
+      padding: 0.25rem 1.5rem;
+      transition: color 0.3s ease;
+    }
+    .dropdown-item:hover {
+      color: #a88362;
+      background: transparent;
+    }
+
+    /* Main image section */
+    .main-photo {
+      position: relative;
+      margin-bottom: 5rem;
+    }
+    @keyframes fadeInHero {
+      from {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .main-photo img {
+      width: 100%;
+      max-height: 600px;
+      object-fit: cover;
+      border-radius: 0.3rem;
+      filter: brightness(0.92);
+      transition: filter 0.3s ease;
+      user-select: none;
+      animation: fadeInHero 1.2s ease-out forwards;
+      opacity: 0; /* ensures animation takes effect */
+    }
+
+    .main-photo img:hover {
+      filter: brightness(1);
+    }
+    .main-photo .btn-outline-light {
+      border-color: #a88362;
+      color: #a88362;
+      font-weight: 600;
+      font-size: 1.25rem;
+      padding: 0.8rem 2.5rem;
+      border-radius: 2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      user-select: none;
+      transition: all 0.3s ease;
+    }
+    .main-photo .btn-outline-light:hover {
+      background-color: #a88362;
+      color: #fff;
+      border-color: #a88362;
+      box-shadow: 0 4px 12px rgb(168 131 98 / 0.4);
+    }
+
+    /* Welcome Section */
+    .welcome-section {
+      margin-bottom: 7rem;
+    }
+    .welcome-img {
+      width: 100%;
+      max-width: 500px;
+      height: 550px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.08);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .welcome-img:hover {
+      transform: scale(1.02);
+    }
+    .welcome-text h2 {
+      font-family: 'Georgia', serif;
+      font-weight: 600;
+      font-size: 2.75rem;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+      color: #5a4a3c;
+    }
+    .welcome-text p {
+      font-style: italic;
+      font-size: 1.125rem;
+      color: #7b6d5b;
+      max-width: 520px;
+      user-select: text;
+      line-height: 1.8;
+    }
+
+    /* Works Section */
+    .works-section {
+      margin-top: 6rem;
+      margin-left: 250px;
+    }
+    .works-section p {
+      font-size: 1.25rem;
+      color: #5a4a3c;
+      margin-bottom: 1.25rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .works-section .btn-outline-dark {
+      border-color: #a88362;
+      color: #a88362;
+      font-weight: 600;
+      font-size: 1.15rem;
+      padding: 0.65rem 2.25rem;
+      border-radius: 2rem;
+      letter-spacing: 0.08em;
+      transition: all 0.3s ease;
+    }
+    .works-section .btn-outline-dark:hover {
+      background-color: #a88362;
+      color: #fff;
+      border-color: #a88362;
+      box-shadow: 0 5px 16px rgb(168 131 98 / 0.45);
+    }
+    .works-section img {
+      border-radius: 0.3rem;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
+      object-fit: cover;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .works-section img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 32px rgb(0 0 0 / 0.18);
+    }
+    .works-section .btn-negative-left {
+      margin-left: -100px;
+      max-width: 300px;
+      height: 400px;
+    }
+    .works-section .lower-image-col {
+      max-width: 300px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 991.98px) {
+      .works-section {
+        margin-left: 0 !important;
+      }
+      .works-section .btn-negative-left {
+        margin-left: 0 !important;
+      }
+      .welcome-text {
+        padding-left: 0 !important;
+        margin-top: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container text-center">
+    <h1 href="#">Mind.Full.Of.Dreams</h1>
+    <nav>
+      <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Me</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Writings
+          </a>
+          <ul class="dropdown-menu text-center">
+            <li><a class="dropdown-item" href="#">Crush</a></li>
+            <li><a class="dropdown-item" href="#">Others</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="main-photo">
+  <img src="images/pexels-gabby-k-6373291.webp" alt="main landing page photo" />
+  <div class="position-absolute bottom-0 start-50 translate-middle-x mb-3">
+    <a href="#" class="btn btn-outline-light btn-lg px-5">
+      BUY NOW
+    </a>
+  </div>
+</section>
+
+<div class="container welcome-section">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="images/pexels-fariphotography-964547.webp" alt="intro" class="welcome-img" />
+    </div>
+    <div class="col-md-6 welcome-text">
+      <h2>Welcome, To Your Dreams</h2>
+      <p>This is a creative blog and portfolio of my work, works in progress, and more. Join me on my writing journey. Let’s reflect, ponder, and learn together.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container works-section">
+  <div class="row align-items-center mb-4">
+    <div class="col-md-6">
+      <p>Check out some of my pieces of work</p>
+      <button class="btn btn-outline-dark btn-lg mt-2">Explore Now</button>
+    </div>
+    <div class="col-md-6">
+      <img
+        src="images/pexels-kate-graur-3626318-5425686.webp"
+        alt="new image"
+        class="img-fluid btn-negative-left"
+        style="height: 400px;"
+        loading="lazy"
+      />
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-5 lower-image-col mt-3">
+      <img
+        src="images/pexels-cottonbro-4778341.webp"
+        loading="lazy"
+        alt="lower image"
+        class="img-fluid"
+        style="width: 300px; height: 400px;"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="background-color: #8e5438;" class="text-center text-white py-5 mt-5 shadow-sm">
+  <div class="container">
+    <p class="mb-2" style="font-size: 1.1rem; letter-spacing: 0.05em;">
+      &copy; 2025 <span style="font-weight: 600;">Mind.Full.Of.Dreams</span><br>
+      all rights reserved
+    </p>
+    <div class="d-flex justify-content-center gap-4">
+      <a href="#" class="text-white text-decoration-none small fw-light">contact</a>
+      <a href="#" class="text-white text-decoration-none small fw-light">privacy policy</a>
+      <a href="#" class="text-white text-decoration-none small fw-light">instagram</a>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
